@@ -1402,8 +1402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac48c92e2dcec8144bd0ae93ffb0b658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minForce: 15
-  maxForce: 20
+  minForce: 18
+  maxForce: 24
   launchDelay: 1
 --- !u!65 &632039562
 BoxCollider:

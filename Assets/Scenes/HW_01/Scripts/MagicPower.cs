@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MagicPower : MonoBehaviour
 {
-    [SerializeField] private float magicForce = 5f;
+    [SerializeField] private float _magicForce = 5f;
     
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,7 +18,7 @@ public class MagicPower : MonoBehaviour
                     break;
                     
                 case 10: // Enemy
-                    rb.AddForce(direction * magicForce, ForceMode.Impulse);
+                    rb.AddForce(direction * _magicForce, ForceMode.Impulse);
                     break;
             }
         }

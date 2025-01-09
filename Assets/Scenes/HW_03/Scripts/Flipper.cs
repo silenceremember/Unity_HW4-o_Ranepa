@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Flipper : MonoBehaviour
 {
-    [SerializeField] private float restPosition = 0f;
-    [SerializeField] private float pressedPosition = 45f;
-    [SerializeField] private float hitStrength = 10000f;
-    [SerializeField] private float flipperDamper = 150f;
-    [SerializeField] private float stateChangeInterval = 1.5f;
+    [SerializeField] private float _restPosition = 0f;
+    [SerializeField] private float _pressedPosition = 45f;
+    [SerializeField] private float _hitStrength = 10000f;
+    [SerializeField] private float _flipperDamper = 150f;
+    [SerializeField] private float _stateChangeInterval = 1.5f;
 
     private HingeJoint hinge;
     private float timer;
@@ -24,7 +24,7 @@ public class Flipper : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= stateChangeInterval)
+        if (timer >= _stateChangeInterval)
         {
             isPressed = !isPressed;
             timer = 0f;
@@ -32,9 +32,9 @@ public class Flipper : MonoBehaviour
 
         JointSpring spring = new JointSpring
         {
-            spring = hitStrength,
-            damper = flipperDamper,
-            targetPosition = isPressed ? pressedPosition : restPosition
+            spring = _hitStrength,
+            damper = _flipperDamper,
+            targetPosition = isPressed ? _pressedPosition : _restPosition
         };
 
         hinge.spring = spring;

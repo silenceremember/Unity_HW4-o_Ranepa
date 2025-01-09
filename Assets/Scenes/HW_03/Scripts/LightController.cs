@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    [SerializeField] private float speed = 1f;
-    [SerializeField] private float modifier = 1f;
-    [SerializeField] private float minIntensity = 0.5f;
-    [SerializeField] private float maxIntensity = 1.5f;
+    [SerializeField] private float _speed = 1f;
+    [SerializeField] private float _modifier = 1f;
+    [SerializeField] private float _minIntensity = 0.5f;
+    [SerializeField] private float _maxIntensity = 1.5f;
     
     private Light lightComponent;
 
@@ -16,8 +16,8 @@ public class LightController : MonoBehaviour
 
     private void Update()
     {
-        float noise = Mathf.PerlinNoise(Time.time * speed, 0f);
-        float normalizedIntensity = Mathf.Lerp(minIntensity, maxIntensity, noise);
-        lightComponent.intensity = normalizedIntensity * modifier;
+        float noise = Mathf.PerlinNoise(Time.time * _speed, 0f);
+        float normalizedIntensity = Mathf.Lerp(_minIntensity, _maxIntensity, noise);
+        lightComponent.intensity = normalizedIntensity * _modifier;
     }
 }

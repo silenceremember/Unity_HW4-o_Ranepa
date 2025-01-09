@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private float distance = 3f;
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private bool startAtRight;
+    [SerializeField] private float _distance = 3f;
+    [SerializeField] private float _speed = 2f;
+    [SerializeField] private bool _startAtRight;
 
     private Vector3 startPosition;
     private float currentOffset;
@@ -13,21 +13,21 @@ public class MovingPlatform : MonoBehaviour
     private void Start()
     {
         startPosition = transform.position;
-        if (startAtRight)
+        if (_startAtRight)
         {
-            currentOffset = distance;
+            currentOffset = _distance;
             direction = -1;
         }
     }
 
     private void Update()
     {
-        currentOffset += speed * direction * Time.deltaTime;
+        currentOffset += _speed * direction * Time.deltaTime;
 
-        if (currentOffset >= distance || currentOffset <= 0)
+        if (currentOffset >= _distance || currentOffset <= 0)
         {
             direction *= -1;
-            currentOffset = Mathf.Clamp(currentOffset, 0, distance);
+            currentOffset = Mathf.Clamp(currentOffset, 0, _distance);
         }
 
         Vector3 newPosition = startPosition + Vector3.right * currentOffset;

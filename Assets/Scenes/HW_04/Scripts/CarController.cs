@@ -3,14 +3,14 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [Header("Wheel References")]
-    [SerializeField] private GameObject wheelR1;
-    [SerializeField] private GameObject wheelR2;
-    [SerializeField] private GameObject wheelL1;
-    [SerializeField] private GameObject wheelL2;
+    [SerializeField] private GameObject _wheelR1;
+    [SerializeField] private GameObject _wheelR2;
+    [SerializeField] private GameObject _wheelL1;
+    [SerializeField] private GameObject _wheelL2;
 
     [Header("Engine Settings")]
-    [SerializeField] private float targetVelocity = 3500f;
-    [SerializeField] private float motorForce = 3000f;
+    [SerializeField] private float _targetVelocity = 3500f;
+    [SerializeField] private float _motorForce = 3000f;
 
     private HingeJoint hingeFrontRight;
     private HingeJoint hingeFrontLeft;
@@ -19,10 +19,10 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-        hingeFrontRight = wheelR1.GetComponent<HingeJoint>();
-        hingeFrontLeft = wheelL1.GetComponent<HingeJoint>();
-        hingeRearRight = wheelR2.GetComponent<HingeJoint>();
-        hingeRearLeft = wheelL2.GetComponent<HingeJoint>();
+        hingeFrontRight = _wheelR1.GetComponent<HingeJoint>();
+        hingeFrontLeft = _wheelL1.GetComponent<HingeJoint>();
+        hingeRearRight = _wheelR2.GetComponent<HingeJoint>();
+        hingeRearLeft = _wheelL2.GetComponent<HingeJoint>();
 
         ConfigureWheelMotor(hingeFrontRight);
         ConfigureWheelMotor(hingeFrontLeft);
@@ -46,13 +46,13 @@ public class CarController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            motor.targetVelocity = targetVelocity;
-            motor.force = motorForce;
+            motor.targetVelocity = _targetVelocity;
+            motor.force = _motorForce;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            motor.targetVelocity = -targetVelocity;
-            motor.force = motorForce;
+            motor.targetVelocity = -_targetVelocity;
+            motor.force = _motorForce;
         }
         else
         {
